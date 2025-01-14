@@ -7,7 +7,7 @@ from joblib import Parallel, delayed
 from tiatoolbox.tools.stainnorm import MacenkoNormalizer
 from tqdm import tqdm
 
-from .utils import get_files
+from src.utils import get_files
 
 
 class TwoStageStainNormalizer:

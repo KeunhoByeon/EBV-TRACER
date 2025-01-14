@@ -3,7 +3,7 @@ import argparse
 from src import PatchGenerator
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description='PyTorch Training')
+    parser = argparse.ArgumentParser(description='EBV-TRACER Make Patches')
     parser.add_argument('--input_svs_dir', default="", type=str)
     parser.add_argument('--save_patch_dir', default="", type=str)
     parser.add_argument('--patch_size', default=1024, type=int)

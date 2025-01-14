@@ -25,3 +25,16 @@ python two_stage_stain_normalize.py \
 --output_thumbnail_dir OUTPUT_THUMBNAIL_DIR \
 --n_jobs 16
 ```
+
+## EBV-GC Classification
+Download pre-trained EfficientNet B1 model weights from [this link](https://github.com/KeunhoByeon/EBV-TRACER/releases/download/v1/net_5000.pth) and save ot in the "./checkpoints" directory.
+
+#### Run Inference
+```bash
+python inference.py \
+--workers 16 \
+--batch_size 128 \
+--checkpoint ./checkpoints/net_5000.pth \
+--results ./results.csv \
+--data PATCH_DIR
+```

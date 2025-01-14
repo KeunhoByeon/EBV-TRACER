@@ -5,7 +5,7 @@ import os
 from joblib import Parallel, delayed
 from tqdm import tqdm
 
-from .utils import get_files
+from src.utils import get_files
 
 
 class PatchGenerator:

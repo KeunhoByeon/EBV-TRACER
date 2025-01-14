@@ -3,7 +3,7 @@ import argparse
 from src import TwoStageStainNormalizer
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description='PyTorch Training')
+    parser = argparse.ArgumentParser(description='EBV-TRACER Two-stage Stain Normalization')
     parser.add_argument('--target_svs_dir', default="", type=str)
     parser.add_argument('--input_svs_dir', default="", type=str)
     parser.add_argument('--input_patch_dir', default="", type=str)
