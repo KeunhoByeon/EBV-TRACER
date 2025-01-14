@@ -28,7 +28,7 @@ if __name__ == '__main__':
     parser.add_argument('--input_size', default=512, type=int, help='image input size')
     parser.add_argument('--batch_size', default=128, type=int)
     parser.add_argument('--data', default='', help='path to dataset')
-    parser.add_argument('--results', default="./results.csv", type=str, help='path to results')
+    parser.add_argument('--result_path', default="./results.csv", type=str, help='path to results')
     args = parser.parse_args()
 
     model = EfficientNet.from_name("class", "efficientnet-b1", num_classes=3)
@@ -45,19 +45,19 @@ if __name__ == '__main__':
                                               pin_memory=True,
                                               shuffle=False)
 
-    wf = open(args.result, 'w')
+    wf = open(args.result_path, 'w')
     wf.write('file,pred\n')
 
     model.eval()
-    tqdm_desc = 'Evaluation {}'.format(args.data_name)
     with torch.no_grad():
-        for i, (input_paths, inputs, _) in tqdm(enumerate(test_loader), desc=tqdm_desc):
+        for i, (input_paths, inputs, _) in tqdm(enumerate(test_loader), desc="Evaluating", total=len(test_loader)):
             if torch.cuda.is_available():
                 inputs = inputs.cuda()
 
             output = model(inputs)
             preds = torch.argmax(output, dim=1)
 
+            # 0 benign, 1 EBV-GC, 2 Non-EBV-GC
             for input_path, p in zip(input_paths, preds):
                 wf.write('{},{}\n'.format(input_path, p))
     wf.close()

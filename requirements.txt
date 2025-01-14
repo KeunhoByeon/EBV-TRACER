@@ -5,3 +5,4 @@ numpy>=1.23.5
 opencv-python>=4.7.0.72
 openslide-python>=1.2.0
 torch>=1.13.1
+imgaug==0.4.0

@@ -35,6 +35,6 @@ python inference.py \
 --workers 16 \
 --batch_size 128 \
 --checkpoint ./checkpoints/net_5000.pth \
---results ./results.csv \
+--result_path ./results.csv \
 --data PATCH_DIR
 ```
