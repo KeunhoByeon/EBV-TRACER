@@ -9,7 +9,7 @@ if __name__ == "__main__":
     parser.add_argument('--input_patch_dir', default="", type=str)
     parser.add_argument('--output_patch_dir', default="", type=str)
     parser.add_argument('--output_thumbnail_dir', default="", type=str)
-    parser.add_argument('--thumbnail_size', default=4096, type=int)
+    parser.add_argument('--thumbnail_size', default=8192, type=int)
     parser.add_argument('--n_jobs', default=8, type=int)
     args = parser.parse_args()
 
