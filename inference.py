@@ -2,9 +2,10 @@ import argparse
 import os
 
 import torch
+from efficientnet_pytorch import EfficientNet
 from tqdm import tqdm
 
-from src import EBVGCDataset, EfficientNet
+from src import EBVGCDataset, load_checkpoint
 
 
 def prepare_custom_dataset(data_dir, annotation=None):
@@ -31,8 +32,8 @@ if __name__ == '__main__':
     parser.add_argument('--result_path', default="./results.csv", type=str, help='path to results')
     args = parser.parse_args()
 
-    model = EfficientNet.from_name("class", "efficientnet-b1", num_classes=3)
-    model.load_state_dict(torch.load(args.checkpoint))
+    model = EfficientNet.from_name("efficientnet-b1", num_classes=3)
+    model = load_checkpoint(model, args.checkpoint)
     if torch.cuda.is_available():
         model = model.cuda()
 
